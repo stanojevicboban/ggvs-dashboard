@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+KYC Dashboard POC
+
+Please refer to `.node-version` in oder to use the correct node version to run the app.
+
+Use [Node Version Manager][https://github.com/nvm-sh/nvm] to install and use the correct node version.
+
+Before running the app, run `npm install`.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
