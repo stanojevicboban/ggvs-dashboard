@@ -2,7 +2,7 @@
 
 Please refer to `.node-version` in oder to use the correct node version to run the app.
 
-Use [https://github.com/nvm-sh/nvm](Node Version Manager) to install and use the correct node version.
+Use [Node Version Manager](https://github.com/nvm-sh/nvm) to install and use the correct node version.
 
 Before running the app, run `npm install`.
 
