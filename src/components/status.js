@@ -4,17 +4,13 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import DoNotDisturbOnIcon from "@mui/icons-material/DoNotDisturbOn";
 
 const statusMap = {
-  Approved: { icon: <CheckIcon />, text: "Approved" },
-  "Customer Processing": {
+  2: { icon: <CheckIcon />, text: "Approved" },
+  4: { icon: <MoreHorizIcon />, text: "Ready for review" },
+  3: { icon: <DoNotDisturbOnIcon />, text: "Rejected" },
+  11: { icon: <MoreHorizIcon />, text: "In progress" },
+  5: {
     icon: <MoreHorizIcon />,
-    text: "Customer Processing",
-  },
-  "Ready for Review": { icon: <MoreHorizIcon />, text: "Ready for review" },
-  Rejected: { icon: <DoNotDisturbOnIcon />, text: "Rejected" },
-  Cancelled: { icon: <CancelIcon />, text: "Cancelled" },
-  "In progress": {
-    icon: <MoreHorizIcon />,
-    text: "User Accepted KYC Invitation",
+    text: "In progress",
   },
 };
 

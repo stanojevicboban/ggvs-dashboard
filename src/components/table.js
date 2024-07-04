@@ -9,6 +9,17 @@ import { format } from "date-fns";
 import SubjectIcon from "@mui/icons-material/Subject";
 import StatusComponent from "../components/status";
 import RiskScore from "../components/risk-score";
+import { Label } from "recharts";
+
+function findByKey(arr, label) {
+  for (let attr in arr) {
+    if (arr[attr].label === label) {
+      return arr[attr].value;
+    }
+  }
+  
+  return '';
+}
 
 const TableComponent = ({ data }) => {
   return (
@@ -36,27 +47,31 @@ const TableComponent = ({ data }) => {
         </TableHead>
         <TableBody>
           {data &&
-            data.map((row) => (
+            data.map((row) => {
+              const firstName = findByKey(row.attributes, 'First name');
+              const lastName = findByKey(row.attributes, 'Last name');
+              const email = findByKey(row.attributes, 'Email');
+            return (
               <TableRow
-                key={row.Name}
+                key={row._id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row" align="left">
                   <p className="bold">
-                    {format(new Date(row.DateCreated), "MMMM dd yyyy")}
+                    {format(new Date(row.createdAt), "MMMM dd yyyy")}
                   </p>
-                  <p>{format(Date(row.DateCreated), "HH:mm:ss")}</p>
+                  <p>{format(Date(row.createdAt), "HH:mm:ss")}</p>
                 </TableCell>
                 <TableCell align="left">
-                  <p className="bold">{row.Name}</p>
-                  <p>{row.Email}</p>
+                  <p className="bold">{firstName} {lastName}</p>
+                  <p>{email}</p>
                 </TableCell>
-                <TableCell align="left">{row.Type}</TableCell>
+                <TableCell align="left">{row.type}</TableCell>
                 <TableCell align="left">
-                  <RiskScore riskScore={row.RiskScore} />
+                  <RiskScore riskScore={row.riskScoring.currentCategory} />
                 </TableCell>
                 <TableCell align="left">
-                  <StatusComponent status={row.Status} />
+                  <StatusComponent status={row.currentStatus} />
                 </TableCell>
                 <TableCell align="left">
                   <a href="/">
@@ -64,7 +79,9 @@ const TableComponent = ({ data }) => {
                   </a>
                 </TableCell>
               </TableRow>
-            ))}
+            )
+          }
+          )}
         </TableBody>
       </Table>
     </TableContainer>

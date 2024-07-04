@@ -1,14 +1,14 @@
 import { PieChart, Pie, Legend, Cell } from "recharts";
 import Box from "@mui/material/Box";
+import {statusMap} from '../utils';
 
 function getStatusDataForPieChart(payload) {
-  const statusCount = {
-    Approved: 0,
-    "Customer Processing": 0,
-    Rejected: 0,
-    Cancelled: 0,
-    "Ready for Review": 0,
-    "In progress": 0,
+  let statusCount = {
+    2: 0,
+    4: 0,
+    3: 0,
+    11: 0,
+    5: 0,
   };
 
   const getRandomColor = () => {
@@ -21,14 +21,18 @@ function getStatusDataForPieChart(payload) {
   };
 
   payload.forEach((item) => {
-    if (statusCount.hasOwnProperty(item.Status)) {
-      statusCount[item.Status]++;
+    if (statusCount.hasOwnProperty(item.currentStatus)) {
+      statusCount[item.currentStatus]++;
     }
   });
 
+  // Manual fix: Since statuses 5 and 11 are same, let's merge them.
+  statusCount[5] += statusCount[11];
+  delete statusCount[11];
+
   const pieChartData = Object.keys(statusCount).map((status) => ({
-    name: status + " (" + statusCount[status] + ")",
-    raw: status,
+    name: statusMap[status] + " (" + statusCount[status] + ")",
+    raw: statusMap[status],
     value: statusCount[status],
     color: getRandomColor(),
   }));

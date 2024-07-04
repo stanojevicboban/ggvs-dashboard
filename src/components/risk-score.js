@@ -4,13 +4,13 @@ import DangerousIcon from "@mui/icons-material/Dangerous";
 import ErrorIcon from "@mui/icons-material/Error";
 
 const riskScoreMap = {
-  LOW: { icon: <CheckCircleIcon />, text: "Low", className: "green" },
-  MEDIUM: { icon: <DangerousIcon />, text: "Medium", className: "orange" },
-  HIGH: { icon: <ErrorIcon />, text: "High", className: "red" },
+  'low': { icon: <CheckCircleIcon />, text: "Low", className: "green" },
+  'medium': { icon: <DangerousIcon />, text: "Medium", className: "orange" },
+  'high': { icon: <ErrorIcon />, text: "High", className: "red" },
 };
 
 const RiskScore = (riskScore) => {
-  const { icon, text, className } = riskScoreMap[riskScore] || {};
+  const { icon, text, className } = riskScoreMap[riskScore.riskScore] || {};
 
   if (!icon || !text || !className) {
     return (
