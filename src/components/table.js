@@ -71,7 +71,7 @@ const TableComponent = ({ data }) => {
                   <RiskScore riskScore={row.riskScoring.currentCategory} />
                 </TableCell>
                 <TableCell align="left">
-                  <StatusComponent status={row.currentStatus} />
+                  <StatusComponent status={row.currentStatus} statusName={row.statusName} />
                 </TableCell>
                 <TableCell align="left">
                   <a href="/">

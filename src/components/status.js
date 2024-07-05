@@ -14,17 +14,17 @@ const statusMap = {
   },
 };
 
-const StatusComponent = ({ status }) => {
-  const { icon, text } = statusMap[status] || {};
+const StatusComponent = ({ status, statusName }) => {
+  const { icon } = statusMap[status] || {};
 
-  if (!icon || !text) {
+  if (!icon) {
     return null; // or return a default value if needed
   }
 
   return (
     <p className="Table-item">
       {icon}
-      <span>{text}</span>
+      <span>{statusName}</span>
     </p>
   );
 };
